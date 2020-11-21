@@ -1,0 +1,24 @@
+org: southojere
+app: basic-gql-api
+service: my-api
+
+provider:
+  name: aws
+  runtime: nodejs12.x
+
+plugins:
+  - serverless-offline
+  - serverless-bundle
+
+functions:
+  graphql:
+    handler: handlers/graphql.graphqlHandler
+    events:
+      - http:
+          path: graphql
+          method: post
+          cors: true
+      - http:
+          path: graphql
+          method: get
+          cors: true
